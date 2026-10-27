@@ -12,8 +12,9 @@ jobs:
       - uses: actions/checkout@v4
       - name: Setup
         run: |
-          keytool -keyalg RSA -genkeypair -alias androiddebugkey -keypass android -keystore /root/debug.keystore -storepass android -dname "CN=Android Debug,O=Android,C=US" -validity 9999
+          mkdir -p ~/.local/share/godot/export_templates
           mkdir -p ~/.config/godot
+          cp -r /root/.local/share/godot/export_templates/* ~/.local/share/godot/export_templates/ || true
           cat > ~/.config/godot/editor_settings-4.tres << 'EOF'
           [gd_resource type="EditorSettings" format=3]
           [resource]
